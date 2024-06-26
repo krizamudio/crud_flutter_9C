@@ -3,7 +3,7 @@ import 'package:crud_app_2/modelos/notas.dart';
 import 'package:path/path.dart';
 
 class Operaciones{
-  static Future<Database> _openDB() async {
+  static Future<Database> _openDB() async { //Abrir la base de datos
     try {
       return await openDatabase(
         join(await getDatabasesPath(), 'notas.db'),
@@ -20,20 +20,21 @@ class Operaciones{
     }
   }
 
-  static Future<void> insertarOperacion(Nota nota) async {
+  static Future<void> insertarOperacion(Nota nota) async { //Insertar una nota
     Database db = await _openDB();
     db.insert('notas', nota.toMap());
   }
 
-  static Future<List<Nota>> obtenerNotas() async {
+  static Future<List<Nota>> obtenerNotas() async { //Obtener todas las notas
     Database db = await _openDB();
     final List<Map<String, dynamic>> notasMaps = await db.query('notas');
 
-    // for(var n in notasMaps){
-    //   print("____" + n['titulo'].toString());
-    // }
+    for(var n in notasMaps){
+      print("____" + n['titulo'].toString());
+      print("____" + n['descripcion'].toString());
+    }
 
-    return List.generate(notasMaps.length, (i) {
+    return List.generate(notasMaps.length, (i) { //Generar una lista de notas
       return Nota(
         id: notasMaps[i]['id'],
         titulo: notasMaps[i]['titulo'],

@@ -38,6 +38,8 @@ dependencies:
   sqflite: any
   path_provider: any
   path: any
+  sqflite_common_ffi: any
+  
 
 dev_dependencies:
   flutter_test:

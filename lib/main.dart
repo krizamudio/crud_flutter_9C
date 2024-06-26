@@ -1,7 +1,6 @@
 import 'package:crud_app_2/paginas/pagina_lista.dart';
 import 'package:flutter/material.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
