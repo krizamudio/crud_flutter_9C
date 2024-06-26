@@ -7,7 +7,7 @@ class ListPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Operaciones.obtenerNotas();
+    Operaciones.obtenerNotas(); //Obtener todas las notas
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),

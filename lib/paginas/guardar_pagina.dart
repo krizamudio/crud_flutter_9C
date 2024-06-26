@@ -70,7 +70,7 @@ class _guardarFormularioState extends State<guardarFormulario> {
               if(_formKey.currentState!.validate()){
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Guardando Nota')));
 
-                Operaciones.insertarOperacion(Nota(
+                Operaciones.insertarOperacion(Nota( //Insertar la nota
                   id: 3,
                   titulo: _tituloController.text,
                   descripcion: _descripcionController.text

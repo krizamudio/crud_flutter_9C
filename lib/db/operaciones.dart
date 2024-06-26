@@ -29,7 +29,7 @@ class Operaciones{
     Database db = await _openDB();
     final List<Map<String, dynamic>> notasMaps = await db.query('notas');
 
-    for(var n in notasMaps){
+    for(var n in notasMaps){ //Recorrer las notas x el debug
       print("____" + n['titulo'].toString());
       print("____" + n['descripcion'].toString());
     }
