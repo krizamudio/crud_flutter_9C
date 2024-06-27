@@ -76,7 +76,7 @@ class _guardarFormularioState extends State<guardarFormulario> {
                 ));
               }
             })
-      ],
+        ],
       ),
       ),
     );
