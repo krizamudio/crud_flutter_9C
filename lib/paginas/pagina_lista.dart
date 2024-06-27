@@ -16,7 +16,7 @@ class ListPages extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => guardarPagina()));
       }),
       appBar: AppBar(
-        title: const Text('Material App Bar'),
+        title: const Text('CRUD'),
       ),
       body: Container(
         child: _MiLista()
@@ -26,9 +26,9 @@ class ListPages extends StatelessWidget {
 }
 
 class _MiLista extends StatefulWidget {
-  const _MiLista({
-    super.key,
-  });
+  // const _MiLista({
+  //   super.key,
+  // });
 
   @override
   State<_MiLista> createState() => _MiListaState();
@@ -37,16 +37,14 @@ class _MiLista extends StatefulWidget {
 class _MiListaState extends State<_MiLista> {
   List<Nota> notas = [];
    @override
-   void initState() {
-    _cargarDatos();
+   void initState() { 
+    _cargarDatos(); 
      super.initState();
    }
 
   @override
   Widget build(BuildContext context) {
     
-   
-
     return ListView.builder(
       itemCount: notas.length,
       itemBuilder: (_,i) => _crearTEm(i),
