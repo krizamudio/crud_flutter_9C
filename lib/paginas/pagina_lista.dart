@@ -16,7 +16,8 @@ class ListPages extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => guardarPagina()));
       }),
       appBar: AppBar(
-        title: const Text('CRUD'),
+        backgroundColor: Colors.blueAccent,
+        title: const Text('CRUD', style: TextStyle(color: Colors.white)),
       ),
       body: Container(
         child: _MiLista()
@@ -25,7 +26,7 @@ class ListPages extends StatelessWidget {
   }
 }
 
-class _MiLista extends StatefulWidget {
+class _MiLista extends StatefulWidget { 
   // const _MiLista({
   //   super.key,
   // });
@@ -34,34 +35,48 @@ class _MiLista extends StatefulWidget {
   State<_MiLista> createState() => _MiListaState();
 }
 
-class _MiListaState extends State<_MiLista> {
-  List<Nota> notas = [];
+class _MiListaState extends State<_MiLista> { 
+  List<Nota> notas = []; //Lista de notas
    @override
-   void initState() { 
-    _cargarDatos(); 
+   void initState() {  //Se ejecuta antes de que se construya el widget
+     _cargarDatos(); 
      super.initState();
    }
 
   @override
   Widget build(BuildContext context) {
     
-    return ListView.builder(
+    return ListView.builder(  //Constructor de lista
       itemCount: notas.length,
-      itemBuilder: (_,i) => _crearTEm(i),
+      itemBuilder: (_,i) => _crearTEm(i), //Funcion que crea los elementos de la lista
     );
   }
 
-  _cargarDatos() async {
+  _cargarDatos() async { //Funcion para cargar las notas
     List<Nota> auxNotas = await Operaciones.obtenerNotas();
     setState(() {
       notas = auxNotas;
     });
   }
 
-  _crearTEm(int i) {
-    return ListTile(
-      title: Text(notas[i].titulo),
+  _crearTEm(int i) { //Funcion para crear los elementos de la lista
+    return Dismissible( //Widget para eliminar elementos de la lista
+      key: Key(i.toString()),
+      direction: DismissDirection.startToEnd,
+      background: Container(
+        padding: const EdgeInsets.only(left: 10),
+        color: Colors.red,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: const Icon(Icons.delete, color: Colors.white, size: 30,)),
+      ),
+      onDismissed: (direction) {
+        Operaciones.eliminarOperacion(notas[i]);
+      },
+
+      child: ListTile(
+        title: Text(notas[i].titulo),
+      ),
     );
   }
 }
-
