@@ -10,21 +10,25 @@ class ListPages extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( //Boton flotante
         child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => guardarPagina()));
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => guardarPagina())
+          ); //Navegar a la pagina de guardar
       }),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: const Text('CRUD', style: TextStyle(color: Colors.white)),
       ),
       body: Container(
-        child: _MiLista()
+        child: _MiLista() 
       ),
     );
   }
 }
+
+
 
 class _MiLista extends StatefulWidget { 
   // const _MiLista({
@@ -33,6 +37,7 @@ class _MiLista extends StatefulWidget {
 
   @override
   State<_MiLista> createState() => _MiListaState();
+
 }
 
 class _MiListaState extends State<_MiLista> { 
@@ -66,16 +71,15 @@ class _MiListaState extends State<_MiLista> {
       background: Container(
         padding: const EdgeInsets.only(left: 10),
         color: Colors.red,
-        child: Align(
+        child: const Align(
           alignment: Alignment.centerLeft,
-          child: const Icon(Icons.delete, color: Colors.white, size: 30,)),
+          child: Icon(Icons.delete, color: Colors.white, size: 30,)),
       ),
       onDismissed: (direction) {
-        Operaciones.eliminarOperacion(notas[i]);
+        Operaciones.eliminarOperacion(notas[i]); //Eliminar la nota
       },
-
-      child: ListTile(
-        title: Text(notas[i].titulo),
+      child: ListTile( 
+        title: Text(notas[i].titulo), //Titulo de la nota
       ),
     );
   }

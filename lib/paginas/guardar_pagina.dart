@@ -7,11 +7,14 @@ class guardarPagina extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Guardar Nota'),
       ),
-      body: guardarFormulario(),);
+      body: guardarFormulario());
   }
 }
 
@@ -38,7 +41,7 @@ class _guardarFormularioState extends State<guardarFormulario> {
         TextFormField(
           controller: _tituloController, //Controlador para el campo de texto
           validator: (value) {
-            if(value!.isEmpty){
+            if(value!.isEmpty){ //Validar que el campo no este vacio
               return 'Por favor ingrese un titulo';
             } else {
               return null;
@@ -49,7 +52,7 @@ class _guardarFormularioState extends State<guardarFormulario> {
             labelText: 'Titulo de la Nota'),
             ),
             SizedBox(height: 10),
-        TextFormField(
+        TextFormField( //Campo de texto
           controller: _descripcionController, //Controlador para el campo de texto
           maxLength: 1000,
           maxLines: 4,
@@ -66,9 +69,9 @@ class _guardarFormularioState extends State<guardarFormulario> {
             ),
             SizedBox(height: 10),
             ElevatedButton(child: Text('Guardar Nota'), 
-            onPressed: () {
-              if(_formKey.currentState!.validate()){
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Guardando Nota')));
+            onPressed: () { //Funcion para guardar la nota
+              if(_formKey.currentState!.validate()){ //Validar el formulario
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Guardando Nota'))); //Mostrar mensaje
 
                 Operaciones.insertarOperacion(Nota( //Insertar la nota
                   titulo: _tituloController.text,
