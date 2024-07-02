@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:crud_app_2/modelos/notas.dart';
 
 class ListPages extends StatelessWidget {
+  
   const ListPages({super.key});
 
   @override
@@ -27,7 +28,6 @@ class ListPages extends StatelessWidget {
     );
   }
 }
-
 
 
 class _MiLista extends StatefulWidget { 
