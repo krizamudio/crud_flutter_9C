@@ -1,4 +1,5 @@
 import 'package:crud_app_2/db/operaciones.dart';
+import 'package:crud_app_2/paginas/actualizar_pagina.dart';
 import 'package:crud_app_2/paginas/guardar_pagina.dart';
 import 'package:flutter/material.dart';
 import 'package:crud_app_2/modelos/notas.dart';
@@ -79,7 +80,14 @@ class _MiListaState extends State<_MiLista> {
         Operaciones.eliminarOperacion(notas[i]); //Eliminar la nota
       },
       child: ListTile( 
-        title: Text(notas[i].titulo), //Titulo de la nota
+        title: Text(notas[i].titulo),
+        subtitle: Text(notas[i].descripcion), //Descripcion de la nota
+        trailing: MaterialButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+            builder: (context) => actualizarPagina(nota: notas[i])));
+          },
+          child: Icon(Icons.edit)), //Titulo de la nota
       ),
     );
   }
