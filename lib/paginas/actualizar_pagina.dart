@@ -62,7 +62,7 @@ class actualizarPagina extends StatelessWidget {
               if(_formKey.currentState!.validate()){ //Validar el formulario
                 nota.titulo = _tituloController.text;
                 nota.descripcion = _descripcionController.text;
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Guardando Nota'))); //Mostrar mensaje
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Actualizando Nota'))); //Mostrar mensaje
 
                 Operaciones.actualizarOperacion(nota);
               }
