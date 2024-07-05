@@ -1,7 +1,7 @@
 class Nota{
-  final int? id;
-  final String titulo;
-  final String descripcion;
+  int? id;
+  String titulo;
+  String descripcion;
 
   Nota({this.id, required this.titulo, required this.descripcion});
 
