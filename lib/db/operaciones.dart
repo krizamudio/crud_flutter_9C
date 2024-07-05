@@ -30,6 +30,11 @@ class Operaciones{
     db.delete('notas', where: 'id = ?', whereArgs: [nota.id]);
   }
 
+ static Future<void> actualizarOperacion(Nota nota) async { //Insertar una nota
+    Database db = await _openDB();
+    db.update('notas',nota.toMap(), where: 'id = ?', whereArgs: [nota.id]);
+  }  
+
   static Future<List<Nota>> obtenerNotas() async { //Obtener todas las notas
     Database db = await _openDB();
     final List<Map<String, dynamic>> notasMaps = await db.query('notas');
